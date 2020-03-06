@@ -31,12 +31,20 @@ class Ogp implements OgpInterface
      */
     private $url;
 
-    public function __construct()
+    /**
+     * ogp constructor.
+     *
+     * @param string $title og:title
+     * @param string $type og:type
+     * @param OgpDataInterface|null $body ogp body
+     * @param string $url ogp ID url
+     */
+    public function __construct(string $title = "", string $type = "", OgpDataInterface $body = null, string $url = "")
     {
-        $this->title = "";
-        $this->type = "";
-        $this->body = null;
-        $this->url = "";
+        $this->title = $title;
+        $this->type = $type;
+        $this->body = $body;
+        $this->url = $url;
     }
 
     public function __toString()
