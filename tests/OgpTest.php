@@ -46,4 +46,19 @@ class OgpTest extends TestCase
 
         $this->ogp->setUrl("abcde");
     }
+
+    /**
+     * @test 
+     */
+    public function checkConvertableString()
+    {
+        $ogp = new Ogp();
+        $ogp->setTitle("Test title");
+        $ogp->setOgpDataBody($this->imageMock);
+
+        $htmlStr = (string)$ogp;
+        $collectStr = "<meta property=\"og:title\" content=\"Test title\">\n";
+
+        $this->assertEquals($htmlStr, $collectStr);
+    }
 }
