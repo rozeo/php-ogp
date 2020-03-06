@@ -41,10 +41,13 @@ class Ogp implements OgpInterface
      */
     public function __construct(string $title = "", string $type = "", OgpDataInterface $body = null, string $url = "")
     {
-        $this->title = $title;
-        $this->type = $type;
-        $this->body = $body;
-        $this->url = $url;
+        $this->setTitle($title)
+             ->setType($type)
+             ->setUrl($url);
+
+        if ($body) {
+            $this->setOgpDataBody($body);
+        }
     }
 
     public function __toString()
@@ -146,7 +149,7 @@ class Ogp implements OgpInterface
      */
     public function setUrl(string $url)
     {
-        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        if (!empty($url) && !filter_var($url, FILTER_VALIDATE_URL)) {
             throw new UnexpectedValueException("$url is invalid url.");
         }
 
