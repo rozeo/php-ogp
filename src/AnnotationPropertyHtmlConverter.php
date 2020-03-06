@@ -44,7 +44,9 @@ trait AnnotationPropertyHtmlConverter
     {
         $reflection = new ReflectionMethod($className, $methodName);
 
-        $annotationRow = explode("\n", $reflection->getDocComment());
+        if(!($docComment = $reflection->getDocComment())) return null;
+
+        $annotationRow = explode("\n", $docComment);
 
         foreach ($annotationRow as $annotation) {
             if (preg_match("/\@meta-name (.+)$/", $annotation, $match)) {

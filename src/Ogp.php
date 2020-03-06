@@ -2,6 +2,8 @@
 
 namespace Rozeo\OGP;
 
+use UnexpectedValueException;
+
 /**
  * See open graph protocol details: https://ogp.me/
  */
@@ -20,7 +22,7 @@ class Ogp implements OgpInterface
     private $type;
 
     /**
-     * @var OgpDataInterface
+     * @var OgpDataInterface|null
      */
     private $body;
 
@@ -28,6 +30,26 @@ class Ogp implements OgpInterface
      * @var string
      */
     private $url;
+
+    public function __construct()
+    {
+        $this->title = "";
+        $this->type = "";
+        $this->body = null;
+        $this->url = "";
+    }
+
+    public function __toString()
+    {
+        $str = "";
+        $str .= join("\n", $this->toHtml());
+
+        if ($this->body) {
+            $str .= join("\n", $this->body->toHtml());
+        }
+
+        return $str;
+    }
 
     /**
      * get og:title
@@ -44,6 +66,7 @@ class Ogp implements OgpInterface
      * set og:title
      *
      * @param string $title ogp title
+     * @return $this
      */
     public function setTitle(string $title)
     {
@@ -87,7 +110,7 @@ class Ogp implements OgpInterface
     /**
      * set ogp data body.
      *
-     * @param OgpDataInterface data interface
+     * @param OgpDataInterface $body data interface
      * @return $this
      */
     public function setOgpDataBody(OgpDataInterface $body)

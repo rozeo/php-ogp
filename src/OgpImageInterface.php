@@ -7,7 +7,7 @@ interface OgpImageInterface
     /**
      * get og:image:url
      * 
-     * @property og:image:url
+     * @meta-name og:image:url
      * @return string image url
      */
     public function getUrl();
@@ -23,7 +23,7 @@ interface OgpImageInterface
     /**
      * get og:image:secure_url
      *
-     * @property og:image:secure_url
+     * @meta-name og:image:secure_url
      * @return string image secure url
      */
     public function getSecureUrl();
@@ -39,7 +39,7 @@ interface OgpImageInterface
     /**
      * get og:image:type(mime)
      *
-     * @property og:image:type
+     * @meta-name og:image:type
      * @return string image type(mime)
      */
     public function getType();
@@ -47,7 +47,7 @@ interface OgpImageInterface
     /**
      * set og:image:type(mime)
      *
-     * @param string $mime type
+     * @param string $type mime type string
      * @return $this
      */
     public function setType(string $type);
@@ -55,7 +55,7 @@ interface OgpImageInterface
     /**
      * get og:image:width
      *
-     * @property og:image:width
+     * @meta-name og:image:width
      * @return int image width size
      */
     public function getWidth();
@@ -71,7 +71,7 @@ interface OgpImageInterface
     /**
      * get og:image:height
      *
-     * @property og:image:height
+     * @meta-name og:image:height
      * @return int image height
      */
     public function getHeight();
@@ -87,7 +87,7 @@ interface OgpImageInterface
     /**
      * get og:image:alt
      *
-     * @property og:image:alt
+     * @meta-name og:image:alt
      * @return string image alt string
      */
     public function getAlt();

@@ -10,7 +10,7 @@ interface OgpInterface
     /**
      * get og:title
      *
-     * @property og:title
+     * @meta-name og:title
      * @return string title
      */
     public function getTitle();
@@ -19,13 +19,14 @@ interface OgpInterface
      * set og:title
      *
      * @param string $title ogp title
+     * @return $this
      */
     public function setTitle(string $title);
 
     /**
      * get og:type
      *
-     * @property og:type
+     * @meta-name og:type
      * @return string typename string
      */
     public function getType();
@@ -36,27 +37,27 @@ interface OgpInterface
      * @param string $type typename string
      * @return $this
      */
-    public function setType();
+    public function setType(string $type);
 
     /**
      * get ogp data body.
      *
-     * @return OgpImageInterface data interface
+     * @return OgpDataInterface data interface
      */
     public function getOgpDataBody();
 
     /**
      * set ogp data body.
      *
-     * @param OgpImageInterface data interface
+     * @param OgpDataInterface $body data interface
      * @return $this
      */
-    public function setOgpDataBody();
+    public function setOgpDataBody(OgpDataInterface $body);
 
     /**
      * get og:url
      * 
-     * @property og:url
+     * @meta-name og:url
      * @return string ogp ID url
      */
     public function getUrl();
