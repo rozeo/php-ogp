@@ -12,6 +12,7 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
         "image/png",
         "image/jpeg",
         "image/bmp",
+        "image/gif",
         "image/webp",
     ];
 
@@ -252,6 +253,9 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
 
                 case "webp":
                     return "image/webp";
+
+                case "bmp":
+                    return "image/bmp";
             }
         }
         return null;
