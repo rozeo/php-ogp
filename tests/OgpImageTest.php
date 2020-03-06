@@ -107,4 +107,65 @@ class OgpImageTest extends TestCase
 
         $this->image->setType("application/json");
     }
+ 
+    /**
+     * @test
+     */
+    public function setSecureUrlWithNoExtensionUrl()
+    {
+        $this->image->setType("");
+        $this->image->setUrl("https://google.com");
+
+        $this->assertEquals($this->image->getType(), "");
+    }
+
+    /**
+     * @test
+     */
+    public function setSecureUrlWithExtentionUrl()
+    {
+        $this->image->setType("");
+
+        $this->image->setUrl("https://ogp.me/logo.png");
+
+        $this->assertEquals($this->image->getType(), "image/png");
+    }
+
+    /**
+     * @test
+     */
+    public function setWidth()
+    {
+        $width = 40;
+        $this->assertEquals($this->image->setWidth($width)->getWidth(), $width);
+    }
+
+    /**
+     * @test
+     */
+    public function setInvalidWidth()
+    {
+        $this->expectException(UnexpectedValueException::class);
+
+        $this->image->setWidth(-200);
+    }
+
+    /**
+     * @test
+     */
+    public function setHeight()
+    {
+        $height = 100;
+        $this->assertEquals($this->image->setHeight($height)->getHeight(), $height);
+    }
+
+    /**
+     * @test
+     */
+    public function setInvalidHeihgt()
+    {
+        $this->expectException(UnexpectedValueException::class);
+
+        $this->image->setHeight(-1000);
+    }
 }
