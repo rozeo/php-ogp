@@ -13,6 +13,9 @@ class OgpTest extends TestCase
     {
         $this->imageMock = new class implements OgpDataInterface
         {
+            /**
+             * @return string[]
+             */
             public function toHtml()
             {
                 return [];

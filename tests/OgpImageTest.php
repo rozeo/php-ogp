@@ -194,5 +194,8 @@ class OgpImageTest extends TestCase
         
         $this->image->setUrl("http://example.com/test.webp");
         $this->assertEquals($this->image->getType(), "image/webp");
+
+        $this->image->setUrl("http://example.com/test.bmp");
+        $this->assertEquals($this->image->getType(), "image/bmp");
     }
 }
