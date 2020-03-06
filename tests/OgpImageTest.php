@@ -114,7 +114,7 @@ class OgpImageTest extends TestCase
     public function setSecureUrlWithNoExtensionUrl()
     {
         $this->image->setType("");
-        $this->image->setUrl("https://google.com");
+        $this->image->setSecureUrl("https://google.com");
 
         $this->assertEquals($this->image->getType(), "");
     }
@@ -125,8 +125,7 @@ class OgpImageTest extends TestCase
     public function setSecureUrlWithExtentionUrl()
     {
         $this->image->setType("");
-
-        $this->image->setUrl("https://ogp.me/logo.png");
+        $this->image->setSecureUrl("https://ogp.me/logo.png");
 
         $this->assertEquals($this->image->getType(), "image/png");
     }
