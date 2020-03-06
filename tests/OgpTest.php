@@ -18,6 +18,7 @@ class OgpTest extends TestCase
                 return "";
             }
         };
+        $this->ogp = new Ogp();
     }
 
     /**
@@ -34,5 +35,15 @@ class OgpTest extends TestCase
         $this->assertEquals($instance->getType(), $type);
         $this->assertEquals($instance->getOgpDataBody(), $this->imageMock);
         $this->assertEquals($instance->getUrl(), $url);
+    }
+
+    /**
+     * @test
+     */
+    public function setInvalidUrl()
+    {
+        $this->expectException(UnexpectedValueException::class);
+
+        $this->ogp->setUrl("abcde");
     }
 }
