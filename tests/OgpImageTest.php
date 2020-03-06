@@ -71,7 +71,7 @@ class OgpImageTest extends TestCase
     public function setUrlWithNoExtensionUrl()
     {
         $this->image->setType("");
-        $this->image->setUrl("https://google.com");
+        $this->image->setUrl("http://localhost");
 
         $this->assertEquals($this->image->getType(), "");
     }
