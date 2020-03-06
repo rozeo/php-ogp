@@ -22,8 +22,9 @@ trait AnnotationPropertyHtmlConverter
         foreach ($classMethods as $name) {
             $metaName = $this->getPropertyMetaName($className, $name);
             
-            if (empty($metaName)) continue;
-
+            if (empty($metaName)) {
+                continue;
+            }
             
             $value = $this->$name();
 
@@ -44,7 +45,10 @@ trait AnnotationPropertyHtmlConverter
     {
         $reflection = new ReflectionMethod($className, $methodName);
 
-        if(!($docComment = $reflection->getDocComment())) return null;
+        $docComment = $reflection->getDocComment();
+        if(!is_string($docComment)) {
+            return null;
+        }
 
         $annotationRow = explode("\n", $docComment);
 

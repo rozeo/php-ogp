@@ -9,11 +9,12 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
     use AnnotationPropertyHtmlConverter;
 
     const VALID_IMAGE_MIME = [
-        "image/png",
-        "image/jpeg",
-        "image/bmp",
-        "image/gif",
-        "image/webp",
+        "png" => "image/png",
+        "jpeg" => "image/jpeg",
+        "jpg" => "image/jpeg",
+        "bmp" => "image/bmp",
+        "gif" => "image/gif",
+        "webp" => "image/webp",
     ];
 
     /**
@@ -239,25 +240,14 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
      */
     public function getMimeTypeFromUrl(string $url)
     {
-        if (preg_match("/\.([^\.]+)$/", $url, $match)) {
-            switch($match[1]) {
-                case "jpg":
-                case "jpeg":
-                    return "image/jpeg";
-
-                case "png":
-                    return "image/png";
-
-                case "gif":
-                    return "image/gif";
-
-                case "webp":
-                    return "image/webp";
-
-                case "bmp":
-                    return "image/bmp";
-            }
+        if (!preg_match("/\.([^\.]+)$/", $url, $match)) {
+            return null;
         }
+
+        if (array_key_exists($match[1], OgpImage::VALID_IMAGE_MIME)) {
+            return OgpImage::VALID_IMAGE_MIME[$match[1]];
+        }
+       
         return null;
     }
 }
