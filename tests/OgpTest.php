@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Rozeo\Ogp\Ogp;
 use Rozeo\Ogp\OgpDataInterface;
