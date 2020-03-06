@@ -1,6 +1,6 @@
 <?php
 
-namespace Rozeo\OGP;
+namespace Rozeo\Ogp;
 
 /**
  * See open graph protocol details: https://ogp.me/

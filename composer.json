@@ -15,7 +15,7 @@
 
     "autoload": {
         "psr-4": {
-            "Rozeo\\OGP\\": "src/"
+            "Rozeo\\Ogp\\": "src/"
         }
     }
 }

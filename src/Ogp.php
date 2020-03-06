@@ -1,6 +1,6 @@
 <?php
 
-namespace Rozeo\OGP;
+namespace Rozeo\Ogp;
 
 use UnexpectedValueException;
 
@@ -56,7 +56,7 @@ class Ogp implements OgpInterface
         $str .= join("\n", $this->toHtml());
 
         if ($this->body) {
-            $str .= join("\n", $this->body->toHtml());
+            $str .= "\n" . join("\n", $this->body->toHtml());
         }
 
         return $str;
