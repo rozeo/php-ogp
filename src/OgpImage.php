@@ -80,7 +80,8 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
 
         $this->url = $url;
  
-        if (($mime = $this->getMimeTypeFromUrl($url))) {
+        $mime = $this->getMimeTypeFromUrl($url);
+        if (!empty($mime)) {
             $this->setType($mime);
         }
 
@@ -116,7 +117,8 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
 
         $this->secureUrl = $secureUrl;
 
-        if (($mime = $this->getMimeTypeFromUrl($secureUrl))) {
+        $mime = $this->getMimeTypeFromUrl($secureUrl);
+        if (!empty($mime)) {
             $this->setType($mime);
         }
 
@@ -142,7 +144,7 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
      */
     public function setType(string $type)
     {
-        if (!array_search($type, OgpImage::VALID_IMAGE_MIME)) {
+        if (!empty($type) && array_search($type, OgpImage::VALID_IMAGE_MIME) === FALSE) {
             throw new UnexpectedValueException("$type is invalid image mime type.");
         }
 
@@ -236,7 +238,7 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
      */
     public function getMimeTypeFromUrl(string $url)
     {
-        if (preg_match("/\.(.+)$/", $url, $match)) {
+        if (preg_match("/\.([^\.]+)$/", $url, $match)) {
             switch($match[1]) {
                 case "jpg":
                 case "jpeg":
@@ -252,7 +254,6 @@ class OgpImage implements OgpImageInterface, OgpDataInterface
                     return "image/webp";
             }
         }
-
         return null;
     }
 }
