@@ -1,0 +1,21 @@
+{
+    "name": "rozeo/php-ogp",
+    "description": "Open Graph Protocol for PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rozeo",
+            "email": "st.prog0908@gmail.com"
+        }
+    ],
+    "require": {
+    
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Rozeo\\OGP\\": "src/"
+        }
+    }
+}
