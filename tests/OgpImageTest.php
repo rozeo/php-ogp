@@ -168,4 +168,32 @@ class OgpImageTest extends TestCase
 
         $this->image->setHeight(-1000);
     }
+
+    /**
+     * @test
+     */
+    public function setAlt()
+    {
+        $alt = "alt testing";
+        $this->assertEquals($this->image->setAlt($alt)->getAlt(), $alt);
+    }
+
+    /**
+     * @test
+     */
+    public function extensionDetect()
+    {
+        $this->image->setUrl("http://example.com/test.jpg");
+        $this->assertEquals($this->image->getType(), "image/jpeg");
+
+
+        $this->image->setUrl("http://example.com/test.png");
+        $this->assertEquals($this->image->getType(), "image/png");
+        
+        $this->image->setUrl("http://example.com/test.gif");
+        $this->assertEquals($this->image->getType(), "image/gif");
+        
+        $this->image->setUrl("http://example.com/test.webp");
+        $this->assertEquals($this->image->getType(), "image/webp");
+    }
 }
