@@ -46,7 +46,7 @@ trait AnnotationPropertyHtmlConverter
         $reflection = new ReflectionMethod($className, $methodName);
 
         $docComment = $reflection->getDocComment();
-        if(!is_string($docComment)) {
+        if (!is_string($docComment)) {
             return null;
         }
 
