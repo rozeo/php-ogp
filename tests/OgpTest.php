@@ -15,7 +15,7 @@ class OgpTest extends TestCase
         {
             public function toHtml()
             {
-                return "";
+                return [];
             }
         };
         $this->ogp = new Ogp();
