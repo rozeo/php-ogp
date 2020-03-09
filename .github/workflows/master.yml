@@ -11,7 +11,7 @@ jobs:
 
         strategy:
             matrix:
-                php-versions: ['7.2', '7.3', '7.4']
+                php-versions: ['7.3', '7.4']
 
         steps:
             - uses: actions/checkout@v1
@@ -27,7 +27,12 @@ jobs:
         
             - run: composer install
 
+            - name: install phpstan
+              run: composer require phpstan/phpstan
+
             - run: vendor/bin/phpunit
+
+            - run: vendor/bin/phpstan analyze src/ -l max
 
             - run: vendor/bin/php-coveralls -v -c .coveralls.yml
 
