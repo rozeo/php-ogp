@@ -45,8 +45,9 @@ class Ogp implements OgpInterface
              ->setType($type)
              ->setUrl($url);
 
-        $this->setOgpDataBody($body);
-        
+        if ($body) {
+            $this->setOgpDataBody($body);
+        }
     }
 
     public function __toString()
