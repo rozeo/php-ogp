@@ -9,15 +9,22 @@ jobs:
     test:
         runs-on: ubuntu-latest
 
+        strategy:
+            matrix:
+                php-versions: ['7.2', '7.3', '7.4']
+
         steps:
             - uses: actions/checkout@v1
             
             - name: php setup
               uses: shivammathur/setup-php@master
               with:
-                php-version: ['7.2', '7.3', '7.4']
+                php-version: ${{ matrix.php-versions }}
                 coverage: xdebug
 
+            - name: output php version infomation
+              run: php -v
+        
             - run: composer install --dev
 
             - run: vendor/bin/phpunit
