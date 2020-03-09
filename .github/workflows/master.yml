@@ -15,10 +15,7 @@ jobs:
             - name: php setup
               uses: nanasess/setup-php@master
               with:
-                php-version:
-                    - 7.2
-                    - 7.3
-                    - 7.4
+                php-version: ['7.2', '7.3', '7.4']
 
             - run: composer install --dev
 
