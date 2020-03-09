@@ -25,7 +25,7 @@ jobs:
             - name: output php version infomation
               run: php -v
         
-            - run: composer install --dev
+            - run: composer install
 
             - run: vendor/bin/phpunit
 
